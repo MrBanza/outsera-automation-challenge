@@ -1,0 +1,7 @@
+{
+    "auth": {
+      "token": "faketoken123456",
+      "refreshToken": "fakerefresh123456"
+    }
+  }
+  

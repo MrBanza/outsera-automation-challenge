@@ -1,0 +1,9 @@
+{
+    "product": {
+      "name": "laptop",
+      "category": "electronics",
+      "price": "2999.90",
+      "currency": "BRL"
+    }
+  }
+  
