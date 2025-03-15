@@ -1,40 +1,102 @@
-# Automação de Testes - Outsera Automation Challenge
+# Projeto de Testes Automatizados (E2E, API, Mobile e Performance)
 
-## Introdução
-Este repositório contém testes automatizados para um aplicativo mobile, além de testes de performance utilizando K6.
+Este projeto contém testes **End-to-End (E2E)** para **Web e Mobile**, testes de **API** e **testes de carga** com **K6**. O objetivo é validar a funcionalidade e a performance da aplicação.
 
-## Pré-requisitos
-Antes de executar os testes, certifique-se de ter instalado:
-- Node.js e npm
-- Appium (para testes mobile)
-- K6 (para testes de performance)
-- Dependências do projeto (execute `npm install` na raiz do projeto)
+## 📌 Tecnologias Utilizadas
+- **Cypress**: Para automação de testes Web.
+- **Appium**: Para automação de testes Mobile.
+- **Cucumber**: Para escrita de testes em Gherkin.
+- **Page Object Model (POM)**: Para organização dos elementos e interações.
+- **Supertest**: Para automação de testes de API.
+- **K6**: Para execução de testes de carga.
+- **JavaScript/Node.js**: Para desenvolvimento dos testes.
 
-## Como Executar os Testes
+## 📂 Estrutura do Projeto
+```
+├── cypress/
+│   ├── e2e/                  # Diretório dos testes E2E (Web)
+│   │   ├── features/         # Testes escritos em Gherkin
+│   │   ├── pages/            # Implementação do Page Object Model
+│   ├── support/              # Arquivos de suporte ao Cypress
+│   ├── cypress.config.js     # Configuração principal do Cypress
+│
+├── mobile/
+│   ├── tests/                # Diretório dos testes Mobile
+│   ├── capabilities/         # Configurações do Appium
+│   ├── appium.config.js      # Configuração principal do Appium
+│
+├── api/
+│   ├── tests/                # Diretório dos testes de API
+│   ├── api.test.js           # Testes automatizados com Supertest
+│
+├── k6/
+│   ├── loadtests/            # Diretório dos testes de carga
+│   │   ├── loadtest.js       # Script principal do K6
+│
+├── README.md                 # Documentação do projeto
+```
 
-### Testes Mobile
-1. Conecte um dispositivo Android ou inicie um emulador.
-2. Execute os testes com o comando:
+## 🖥️ Testes E2E (Web)
+Os testes seguem a abordagem **BDD (Behavior-Driven Development)** utilizando Gherkin.
+
+### 🔹 Como Executar os Testes E2E (Web)
+1. Instale as dependências:
    ```sh
-   npm run test:mobile
+   npm install
+   ```
+2. Execute os testes:
+   ```sh
+   npx cypress run
    ```
 
-### Testes de Performance (K6)
-1. Certifique-se de que o K6 está instalado.
-2. Para rodar o teste de performance:
+## 📱 Testes Mobile
+Os testes são escritos utilizando **Appium**.
+
+### 🔹 Como Executar os Testes Mobile
+1. Instale as dependências:
    ```sh
-   run_k6_tests.bat (Windows)
-   ./run_k6_tests.sh (Linux/Mac)
+   npm install
    ```
-3. O relatório HTML será gerado automaticamente na pasta `reports/`.
+2. Inicie o servidor do Appium:
+   ```sh
+   appium
+   ```
+3. Execute os testes:
+   ```sh
+   npx wdio run mobile/appium.config.js
+   ```
 
-### Arquivos Importantes
-- `run_k6_tests.sh`: Script para rodar os testes de performance no Linux/Mac.
-- `run_k6_tests.bat`: Script para rodar os testes de performance no Windows.
-- `reports/result.html`: Relatório formatado de performance gerado automaticamente.
+## 🔄 Testes de API
+Os testes de API utilizam **Supertest** para validar os endpoints.
 
-## Relatórios de Teste
-- Os relatórios de testes mobile são gerados automaticamente.
-- Os testes de performance geram arquivos JSON e HTML em `reports/` para análise.
+### 🔹 Como Executar os Testes de API
+1. Instale as dependências:
+   ```sh
+   npm install
+   ```
+2. Execute os testes de API:
+   ```sh
+   npm test
+   ```
 
-Caso encontre problemas, verifique as dependências ou entre em contato para suporte.
+## 🚀 Testes de Carga
+Os testes de carga com **K6** ajudam a avaliar a performance da aplicação.
+
+### 🔹 Como Executar os Testes de Carga
+1. Instale o K6:
+   ```sh
+   brew install k6  # Para macOS
+   sudo apt install k6  # Para Linux
+   ```
+2. Execute o teste de carga:
+   ```sh
+   k6 run k6/loadtests/loadtest.js
+   ```
+
+## 📌 Melhorias Futuras
+✅ Adicionar mais cenários de testes Web, Mobile e API.  
+✅ Implementar relatórios automatizados.  
+✅ Integrar os testes em pipelines CI/CD.  
+
+---
+🔹 **Desenvolvido para garantir qualidade e performance da aplicação!** 🚀
