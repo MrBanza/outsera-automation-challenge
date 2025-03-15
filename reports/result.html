@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Performance - K6</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <h1>Relatório de Performance - K6</h1>
+    <table id="reportTable">
+        <thead>
+            <tr>
+                <th>Métrica</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    
+    <script>
+        function loadReport() {
+            fetch('result.json')
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.querySelector('#reportTable tbody');
+                    tbody.innerHTML = '';
+                    
+                    for (const [key, value] of Object.entries(data.metrics)) {
+                        let displayValue = value.value || `Min: ${value.min}, Med: ${value.med}, Max: ${value.max}, Avg: ${value.avg}`;
+                        tbody.innerHTML += `<tr><td>${key}</td><td>${displayValue}</td></tr>`;
+                    }
+                })
+                .catch(error => console.error('Erro ao carregar o relatório:', error));
+        }
+        
+        window.onload = loadReport;
+    </script>
+</body>
+</html>

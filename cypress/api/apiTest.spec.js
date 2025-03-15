@@ -39,7 +39,7 @@ describe('Teste de API com Cypress', () => {
     }).then((response) => {
         expect(response.status).to.eq(201); // JSONPlaceholder sempre retorna 201
         expect(response.body).to.have.property('id'); // O post é criado mesmo sem título
-        cy.log('⚠️ A API não valida os dados e cria o post mesmo sem título.');
+        cy.log('A API não valida os dados e cria o post mesmo sem título.');
     });
 });
 
@@ -62,7 +62,7 @@ describe('Teste de API com Cypress', () => {
     }).then((response) => {
         expect(response.status).to.eq(200); // A API retorna 200 mesmo se o post não existir
         expect(response.body).to.be.empty; // O corpo da resposta deve estar vazio
-        cy.log('⚠️ A API sempre retorna 200 ao deletar, mesmo que o post não exista.');
+        cy.log('A API sempre retorna 200 ao deletar, mesmo que o post não exista.');
     });
 });
 });

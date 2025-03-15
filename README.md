@@ -1,38 +1,40 @@
-# Outsera Automation Challenge
+# Automação de Testes - Outsera Automation Challenge
 
-## Objetivo
-Este projeto tem o objetivo de demonstrar conceitos e formas de utilizar ferramentas de automação de testes para criar testes de carga, API, E2E e mobile.
+## Introdução
+Este repositório contém testes automatizados para um aplicativo mobile, além de testes de performance utilizando K6.
 
 ## Pré-requisitos
+Antes de executar os testes, certifique-se de ter instalado:
+- Node.js e npm
+- Appium (para testes mobile)
+- K6 (para testes de performance)
+- Dependências do projeto (execute `npm install` na raiz do projeto)
 
-### Node.js
-- Node.js 14.17.0, 16.13.0, 18.0.0 e superiores
-- Gerenciador de Pacotes do Node.js (npm)
+## Como Executar os Testes
 
-### Javascript
-- ES6 e superiores
+### Testes Mobile
+1. Conecte um dispositivo Android ou inicie um emulador.
+2. Execute os testes com o comando:
+   ```sh
+   npm run test:mobile
+   ```
 
-### Make
-Ferramenta para controlar a geração de executáveis a partir de arquivos fonte.
+### Testes de Performance (K6)
+1. Certifique-se de que o K6 está instalado.
+2. Para rodar o teste de performance:
+   ```sh
+   run_k6_tests.bat (Windows)
+   ./run_k6_tests.sh (Linux/Mac)
+   ```
+3. O relatório HTML será gerado automaticamente na pasta `reports/`.
 
-### Aplicativo Mobile - Android
+### Arquivos Importantes
+- `run_k6_tests.sh`: Script para rodar os testes de performance no Linux/Mac.
+- `run_k6_tests.bat`: Script para rodar os testes de performance no Windows.
+- `reports/result.html`: Relatório formatado de performance gerado automaticamente.
 
-#### Android Studio
-Para este projeto, utilizamos o Android Studio para fornecer um ambiente de desenvolvimento integrado (IDE), kit de desenvolvimento (SDK), interface de usuário (UI Automator) para termos emuladores integrados, ferramentas de depuração e dispositivos virtuais (AVD).
+## Relatórios de Teste
+- Os relatórios de testes mobile são gerados automaticamente.
+- Os testes de performance geram arquivos JSON e HTML em `reports/` para análise.
 
-#### Appium
-Precisamos também do Appium como um servidor HTTP para criar e manipular as sessões do WebDriver para diferentes plataformas, como iOS e Android.
-
-### Variável de ambiente
-Precisamos definir e persistir a variável de ambiente como ANDROID_HOME (ou alternativamente ANDROID_SDK_ROOT) com o caminho do diretório do SDK do Android Studio:
-
-```bash
-npm i --location=global appium
-npm install wd
-npm install @appium/doctor --location=global
-download appium inspector
-appium driver install uiautomator2
-sudo apt-get install android-sdk
-sudo apt-get install libva-dev
-appium server -p 4723 -a 127.0.0.1 -pa /wd/hub
-appium -a 127.0.0.1 -p 4723 /wd/hub
+Caso encontre problemas, verifique as dependências ou entre em contato para suporte.
