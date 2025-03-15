@@ -1,102 +1,82 @@
-# Projeto de Testes Automatizados (E2E, API, Mobile e Performance)
+# Projeto de Testes Automatizados
 
-Este projeto contém testes **End-to-End (E2E)** para **Web e Mobile**, testes de **API** e **testes de carga** com **K6**. O objetivo é validar a funcionalidade e a performance da aplicação.
+Este repositório contém testes automatizados para web, API, mobile e carga, utilizando Cypress, Appium, Supertest e K6. Os testes incluem cenários E2E, testes de API, testes de carga e testes mobile.
 
-## 📌 Tecnologias Utilizadas
-- **Cypress**: Para automação de testes Web.
-- **Appium**: Para automação de testes Mobile.
-- **Cucumber**: Para escrita de testes em Gherkin.
-- **Page Object Model (POM)**: Para organização dos elementos e interações.
-- **Supertest**: Para automação de testes de API.
-- **K6**: Para execução de testes de carga.
-- **JavaScript/Node.js**: Para desenvolvimento dos testes.
-
-## 📂 Estrutura do Projeto
-```
-├── cypress/
-│   ├── e2e/                  # Diretório dos testes E2E (Web)
-│   │   ├── features/         # Testes escritos em Gherkin
-│   │   ├── pages/            # Implementação do Page Object Model
-│   ├── support/              # Arquivos de suporte ao Cypress
-│   ├── cypress.config.js     # Configuração principal do Cypress
-│
-├── mobile/
-│   ├── tests/                # Diretório dos testes Mobile
-│   ├── capabilities/         # Configurações do Appium
-│   ├── appium.config.js      # Configuração principal do Appium
-│
-├── api/
-│   ├── tests/                # Diretório dos testes de API
-│   ├── api.test.js           # Testes automatizados com Supertest
-│
-├── k6/
-│   ├── loadtests/            # Diretório dos testes de carga
-│   │   ├── loadtest.js       # Script principal do K6
-│
-├── README.md                 # Documentação do projeto
-```
-
-## 🖥️ Testes E2E (Web)
-Os testes seguem a abordagem **BDD (Behavior-Driven Development)** utilizando Gherkin.
-
-### 🔹 Como Executar os Testes E2E (Web)
-1. Instale as dependências:
-   ```sh
-   npm install
-   ```
-2. Execute os testes:
-   ```sh
-   npx cypress run
-   ```
-
-## 📱 Testes Mobile
-Os testes são escritos utilizando **Appium**.
-
-### 🔹 Como Executar os Testes Mobile
-1. Instale as dependências:
-   ```sh
-   npm install
-   ```
-2. Inicie o servidor do Appium:
-   ```sh
-   appium
-   ```
-3. Execute os testes:
-   ```sh
-   npx wdio run mobile/appium.config.js
-   ```
-
-## 🔄 Testes de API
-Os testes de API utilizam **Supertest** para validar os endpoints.
-
-### 🔹 Como Executar os Testes de API
-1. Instale as dependências:
-   ```sh
-   npm install
-   ```
-2. Execute os testes de API:
-   ```sh
-   npm test
-   ```
-
-## 🚀 Testes de Carga
-Os testes de carga com **K6** ajudam a avaliar a performance da aplicação.
-
-### 🔹 Como Executar os Testes de Carga
-1. Instale o K6:
-   ```sh
-   brew install k6  # Para macOS
-   sudo apt install k6  # Para Linux
-   ```
-2. Execute o teste de carga:
-   ```sh
-   k6 run k6/loadtests/loadtest.js
-   ```
-
-## 📌 Melhorias Futuras
-✅ Adicionar mais cenários de testes Web, Mobile e API.  
-✅ Implementar relatórios automatizados.  
-✅ Integrar os testes em pipelines CI/CD.  
+## Tecnologias Utilizadas
+- **Cypress**: Testes E2E web
+- **Appium**: Testes automatizados para aplicativos móveis
+- **Supertest**: Testes automatizados de API
+- **K6**: Testes de carga
+- **GitHub Actions**: Integração Contínua (CI/CD)
 
 ---
-🔹 **Desenvolvido para garantir qualidade e performance da aplicação!** 🚀
+## Estrutura do Projeto
+
+```
+|-- cypress/               # Testes E2E Web (Cypress + Cucumber)
+|   |-- e2e/
+|       |-- features/      # Arquivos de teste em Gherkin
+|   |-- support/
+|       |-- pageObjects/   # Implementação do Page Object Pattern
+|
+|-- api/                   # Testes de API (Supertest)
+|   |-- tests/             # Arquivos de teste de API
+|
+|-- mobile/                # Testes Mobile (Appium)
+|   |-- tests/             # Scripts de teste
+|
+|-- k6/                    # Testes de Carga (K6)
+|   |-- loadtests/         # Scripts de carga
+|
+|-- .github/workflows/     # Configuração do pipeline CI/CD
+|-- README.md              # Documentação do projeto
+```
+
+---
+## Como Executar os Testes
+
+### 1️⃣ Testes E2E Web (Cypress + Cucumber)
+```sh
+npx cypress open  # Executa os testes no modo interativo
+npx cypress run   # Executa os testes em modo headless
+```
+
+### 2️⃣ Testes Automatizados de API (Supertest)
+```sh
+npm test  # Executa todos os testes de API
+```
+
+### 3️⃣ Testes Mobile (Appium)
+```sh
+appium --base-path /wd/hub &   # Iniciar o servidor Appium
+npm run test:mobile            # Executar os testes
+```
+
+### 4️⃣ Testes de Carga (K6)
+```sh
+k6 run k6/loadtests/loadtest.js  # Executa o teste de carga
+```
+
+---
+## Relatórios
+Os relatórios são gerados automaticamente após a execução dos testes e podem ser encontrados em:
+```
+|-- reports/
+|   |-- e2e/        # Relatórios de testes E2E
+|   |-- api/        # Relatórios de testes de API
+|   |-- mobile/     # Relatórios de testes Mobile
+|   |-- performance/ # Relatórios de testes de carga
+```
+
+---
+## CI/CD (GitHub Actions)
+
+O pipeline executa automaticamente os testes após cada commit. Configuração no arquivo `.github/workflows/ci.yml`.
+
+---
+## Melhorias Futuras
+- Adicionar mais testes E2E e API
+- Melhorar a cobertura de testes Mobile
+- Refinar os testes de carga
+- Implementar paralelismo nos testes para execução mais rápida
+

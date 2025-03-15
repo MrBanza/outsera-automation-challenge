@@ -1,33 +1,14 @@
-const cucumber = require("cypress-cucumber-preprocessor").default;
+const { defineConfig } = require("cypress");
+const createEsbuildPlugin = require("@badeball/cypress-cucumber-preprocessor/esbuild").createEsbuildPlugin;
+const addCucumberPreprocessorPlugin = require("@badeball/cypress-cucumber-preprocessor").addCucumberPreprocessorPlugin;
 
-module.exports = {
-  ...(on, config) => {
-    on(
-      "file:preprocessor",
-      cucumber({
-        // options for @badeball/cypress-cucumber-preprocessor
-        step_definitions: "cypress/e2e/step_definitions/",
-      })
-    );
-
-    return {
-      e2e: {
-        setupNodeEvents(on, config) {
-          // implement node event listeners here
-        },
-        specPattern: [
-          "cypress/api/**/*.spec.js",
-          "cypress/e2e/**/*.feature",
-          "cypress/mobile/**/*.spec.js",
-        ],
-        supportFile: false,
-      },
-    };
-  },
-
+module.exports = defineConfig({
   e2e: {
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
+    // Caminho para os testes e2e
+    specPattern: ["cypress/e2e/api/**/*.spec.js", "cypress/e2e/features/**/*.feature"],
+    supportFile: "cypress/support/e2e.js",
   },
-};
+  cucumberPreprocessor: {
+    stepDefinitions: "cypress/e2e/step-definitions/**/*.{js,ts}",
+  },
+});
