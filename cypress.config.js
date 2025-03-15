@@ -16,9 +16,9 @@ module.exports = {
           // implement node event listeners here
         },
         specPattern: [
-          'cypress/e2e/**/*.feature',
-          'cypress/api/**/*.feature',
-          'cypress/mobile/**/*.feature',
+          "cypress/api/**/*.spec.js",
+          "cypress/e2e/**/*.feature",
+          "cypress/mobile/**/*.spec.js",
         ],
         supportFile: false,
       },
