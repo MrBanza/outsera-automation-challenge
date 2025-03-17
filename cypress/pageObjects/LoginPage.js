@@ -1,16 +1,25 @@
 class LoginPage {
-    visit() {
-        cy.visit('/login');
+    visitLoginPage() {
+      cy.visit("https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F");
     }
-
-    fillCredentials(username, password) {
-        cy.get('#username').type(username);
-        cy.get('#password').type(password);
+  
+    loginWithValidCredentials() {
+      cy.fixture("userData").then((userData) => {
+        cy.get("#Email").clear().type(userData.validUser.email);
+        cy.get("#Password").clear().type(userData.validUser.password);
+        cy.get("button[type='submit']").click();
+      });
+      
     }
-
-    submit() {
-        cy.get('button[type="submit"]').click();
+  
+    loginWithInvalidCredentials() {
+      cy.fixture("userData").then((userData) => {
+        cy.get("#Email").clear().type(userData.invalidUser.email);
+        cy.get("#Password").clear().type(userData.invalidUser.password);
+        cy.get("button[type='submit']").click();
+      });
     }
-}
-
-export default new LoginPage();
+  }
+  
+  export default new LoginPage();
+  

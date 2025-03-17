@@ -1,7 +1,7 @@
 {
   "validUser": {
-    "email": "usuario@exemplo.com",
-    "password": "senha123"
+    "email": "admin@yourstore.com",
+    "password": "admin"
   },
   "invalidUser": {
     "email": "invalido@exemplo.com",

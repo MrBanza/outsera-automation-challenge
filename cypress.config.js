@@ -1,14 +1,20 @@
 const { defineConfig } = require("cypress");
-const createEsbuildPlugin = require("@badeball/cypress-cucumber-preprocessor/esbuild").createEsbuildPlugin;
-const addCucumberPreprocessorPlugin = require("@badeball/cypress-cucumber-preprocessor").addCucumberPreprocessorPlugin;
+const cucumber = require("cypress-cucumber-preprocessor").default;
+
 
 module.exports = defineConfig({
   e2e: {
-    // Caminho para os testes e2e
-    specPattern: ["cypress/e2e/api/**/*.spec.js", "cypress/e2e/features/**/*.feature"],
+    async setupNodeEvents(on, config) {
+      on("file:preprocessor", cucumber());
+      return config;
+    },
+    specPattern: [
+      "cypress/api/**/*.spec.js",
+      "cypress/e2e/step_definitions/**/*.feature"
+    ],
     supportFile: "cypress/support/e2e.js",
   },
   cucumberPreprocessor: {
-    stepDefinitions: "cypress/e2e/step-definitions/**/*.{js,ts}",
+    stepDefinitions: "cypress/e2e/step_definitions/**/*.{js,ts}",
   },
 });
