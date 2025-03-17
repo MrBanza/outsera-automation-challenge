@@ -6,5 +6,9 @@
   "invalidUser": {
     "user": "Admin",
     "password": "senhaerrada"
+  },
+  "productUser": {
+    "username": "standard_user",
+    "password": "secret_sauce"    
   }
 }
