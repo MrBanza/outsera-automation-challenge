@@ -1,12 +1,12 @@
 class LoginPage {
     visitLoginPage() {
-      cy.visit("https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F");
+      cy.visit("https://opensource-demo.orangehrmlive.com");
     }
   
     loginWithValidCredentials() {
       cy.fixture("userData").then((userData) => {
-        cy.get("#Email").clear().type(userData.validUser.email);
-        cy.get("#Password").clear().type(userData.validUser.password);
+        cy.get('[name="username"]').clear().type(userData.validUser.user);
+        cy.get('[name="password"]').clear().type(userData.validUser.password);
         cy.get("button[type='submit']").click();
       });
       
@@ -14,8 +14,8 @@ class LoginPage {
   
     loginWithInvalidCredentials() {
       cy.fixture("userData").then((userData) => {
-        cy.get("#Email").clear().type(userData.invalidUser.email);
-        cy.get("#Password").clear().type(userData.invalidUser.password);
+        cy.get('[name="username"]').clear().type(userData.invalidUser.user);
+        cy.get('[name="password"]').clear().type(userData.invalidUser.password);
         cy.get("button[type='submit']").click();
       });
     }

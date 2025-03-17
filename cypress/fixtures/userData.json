@@ -1,10 +1,10 @@
 {
   "validUser": {
-    "email": "admin@yourstore.com",
-    "password": "admin"
+    "user": "Admin",
+    "password": "admin123"
   },
   "invalidUser": {
-    "email": "invalido@exemplo.com",
+    "user": "Admin",
     "password": "senhaerrada"
   }
 }

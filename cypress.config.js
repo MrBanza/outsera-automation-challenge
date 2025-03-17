@@ -10,6 +10,7 @@ module.exports = defineConfig({
     },
     specPattern: [
       "cypress/api/**/*.spec.js",
+      "cypress/e2e/**/*.spec.js",
       "cypress/e2e/step_definitions/**/*.feature"
     ],
     supportFile: "cypress/support/e2e.js",

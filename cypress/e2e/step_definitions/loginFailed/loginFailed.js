@@ -5,10 +5,12 @@ Given("que estou na página de login", () => {
   LoginPage.visitLoginPage();
 });
 
-When("eu preencho o email e a senha do usuário", () => {
-  LoginPage.loginWithValidCredentials();
+When("eu preencho o email e a senha do usuário invalido", () => {
+  LoginPage.loginWithInvalidCredentials();
 });
 
 Then("eu logo na aplicação com sucesso", () => {
-  cy.contains("Dashboard").should("be.visible");
+  cy.wait(2000);
+  cy.get('.oxd-alert-content').should('be.visible');
 });
+
